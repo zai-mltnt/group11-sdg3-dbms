@@ -69,11 +69,28 @@ If you created a CLI or web interface, place it under:
 Run the medicine distribution transactional stored procedure:
 
 ```sql
-CALL process_medicine_distribution(1, 1, 5, 3);
+DELIMITER $$
+
+CREATE TRIGGER trg_low_stock_alert
+AFTER UPDATE ON Medicines
+FOR EACH ROW
+BEGIN
+    IF NEW.quantity <= 5 THEN
+        UPDATE Medicines
+        SET status = 'LOW STOCK'
+        WHERE medicine_id = NEW.medicine_id;
+    ELSE
+        UPDATE Medicines
+        SET status = 'OK'
+        WHERE medicine_id = NEW.medicine_id;
+    END IF;
+END$$
+
+DELIMITER ;
 ```
 
 This automatically:
-- Checks stock  
+- Gives reminders if a medicine is low
 - Updates medicine quantity  
 - Inserts a distribution record  
 - Rolls back if stock is insufficient  
@@ -142,6 +159,7 @@ This system helps promote **SDG 3 – Good Health & Well-Being** by:
 
 ## License
 This academic project is submitted as part of DBMS coursework and is not intended for commercial use.
+
 
 
 
