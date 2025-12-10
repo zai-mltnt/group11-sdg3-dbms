@@ -112,7 +112,6 @@ GRANT SELECT, INSERT, UPDATE ON health_care_system.* TO 'clinic_user'@'localhost
 ---
 
 ## Contributors — Group 11
-(Add your real names here)
 
 | Member Name | Contribution |
 |-------------|--------------|
@@ -143,5 +142,6 @@ This system helps promote **SDG 3 – Good Health & Well-Being** by:
 
 ## License
 This academic project is submitted as part of DBMS coursework and is not intended for commercial use.
+
 
 
