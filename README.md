@@ -116,11 +116,11 @@ GRANT SELECT, INSERT, UPDATE ON health_care_system.* TO 'clinic_user'@'localhost
 
 | Member Name | Contribution |
 |-------------|--------------|
-| Member 1 | DDL + ERD |
-| Member 2 | DML Test Records |
-| Member 3 | Stored Procedure + Transactions |
-| Member 4 | Views + Reports |
-| Member 5 | Demo Interface & Documentation |
+| Climaco / Bongat | DDL + ERD |
+| Climaco / Bongat | DML Test Records |
+| Castro | Stored Procedure + Transactions |
+| Melitante | Views + Reports |
+| ALL MEMBERS | Demo Interface & Documentation |
 
 ---
 
@@ -143,4 +143,5 @@ This system helps promote **SDG 3 – Good Health & Well-Being** by:
 
 ## License
 This academic project is submitted as part of DBMS coursework and is not intended for commercial use.
+
 
