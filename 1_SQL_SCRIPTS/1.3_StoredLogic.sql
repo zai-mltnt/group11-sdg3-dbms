@@ -58,4 +58,27 @@ FROM appointments a
 JOIN patients p ON a.patient_id = p.patient_id
 JOIN healthworkers h ON a.worker_id = h.worker_id
 WHERE a.appointment_date BETWEEN CURDATE() AND CURDATE() + INTERVAL 7 DAY
+
 ORDER BY a.appointment_date ASC;
+
+-- ===============================
+-- TRIGGER: Low Stock Alert
+-- ===============================
+DELIMITER $$
+
+CREATE TRIGGER trg_low_stock_alert
+AFTER UPDATE ON Medicines
+FOR EACH ROW
+BEGIN
+    IF NEW.quantity <= 5 THEN
+        UPDATE Medicines
+        SET status = 'LOW STOCK'
+        WHERE medicine_id = NEW.medicine_id;
+    ELSE
+        UPDATE Medicines
+        SET status = 'OK'
+        WHERE medicine_id = NEW.medicine_id;
+    END IF;
+END$$
+
+DELIMITER ;
